@@ -1,0 +1,9 @@
+function hyp = maxlik_litterman(data,p)
+obj = @(x) obfun(x,data,p);
+x0 = [1;2;1;1];
+hh = fmincon(obj,x0,[-1;-1;-1;-1],[0;0;0;0]);
+end
+
+function obfun(H,d,lag)
+[
+end
