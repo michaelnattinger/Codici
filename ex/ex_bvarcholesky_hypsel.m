@@ -7,21 +7,13 @@ sht = 'matlab';
 raw_id = sheet(1,2:end);
 raw_date = sheet(2:end,1);
 models = {'m1'};
-p = 3;         % lag order for VAR
-CI = 0.8;      % CI: 0.8 == 80% CI
+p = 6;         % lag order for VAR
+CI = 0.68;      % CI: 0.8 == 80% CI
 nsim = 1000;   % draws of b in monte carlo
 irhor = 60;    % impulse response horizon
 prior = 'litterman';
 
-
-% hyp.lam1 = 5; % overall tightness
-% hyp.lam2 = 2; % lag tightness scaling hyperparameter
-% hyp.lam3 = 1; % own-persistence tightness
-% hyp.lam4 = 1; % co-persistence tightness
 % We will choose hyperparameters via maximum likelihood
-
-
-
 
 for i=1:length(models) % define models and run estimation
 switch models{i}
@@ -47,7 +39,7 @@ data.Xdum = [];
     otherwise
         error('prior incorrectly specified')     
 end
-chol_impres = var_chol(data,CI,irhor,nsim,shock); % simulates sign restrictions
+chol_impres = var_chol(data,CI,irhor,nsim,shock); % simulation
 %% Plotting
 for ns=1:length(shock)
 figure()

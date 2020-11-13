@@ -20,9 +20,6 @@ hyp.lam3 = 1; % own-persistence tightness
 hyp.lam4 = 1; % co-persistence tightness
 % by default sets prior tightness proportional to in-sample variance
 
-
-
-
 for i=1:length(models) % define models and run estimation
 switch models{i}
     case 'm1'
